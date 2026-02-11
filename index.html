@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angiografia de Occidente</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-center" aria-label="Principal">
+            <div class="logo">
+                <img src="imagenes/LOGO _ANGIO_ COLOR.png" alt="Logo Angiografia de Occidente">
+            </div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li class="nav-dropdown">
+                    <a href="#servicios">Servicios</a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item dropdown-nested">
+                            <a href="#departamentos">Departamentos</a>
+                            <div class="dropdown-submenu">
+                                <a href="#cardiologia">Cardiología Intervencionista</a>
+                                <a href="#hemodinamia">Hemodinamia</a>
+                                <a href="#radiologia">Radiología Intervencionista</a>
+                                <a href="#neurologia">Neurología Intervencionista</a>
+                                <a href="#enfermeria">Enfermería</a>
+                                <a href="#administrativo">Administrativo</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#aplicativos">Aplicativos</a>
+                    <div class="dropdown-menu">
+                        <a href="http://192.168.123.193:8081/SIIS_PRODUCCION/index.php">SIAO-INTERNO</a>
+                        <a href="https://10.150.201.65/pana/">PANA</a>
+                        <a href="http://192.168.123.142/Gestion_Humana/">GESTIÓN HUMANA</a>
+                        <a href="http://192.168.123.142/Siga/">SIGA</a>
+                        <a href="https://192.168.248.15/index.php?noAUTO=1">MESA DE AYUDA</a>
+                        <a href="https://192.168.123.107">CALL CENTER</a>
+                        <a href="http://192.168.141.5:10009/">ENTERPRICE</a>
+                        <a href="http://192.168.248.12/SIIS/">SIIS CDO</a>
+                        <a href="http://192.168.110.148/AOPACS/">AOPACS LOCAL</a>
+                        <a href="http://192.168.110.148:4443/aopacs/anfegilo?">VISOR IMÁGENES ANGIO</a>
+                        <a href="http://192.168.220.29:8080/aopacs/anfegilo?">VISOR IMÁGENES CDO</a>
+                        <a href="https://angiografiadeoccidente.qpasa.com.co/#/login">VISOR QUEPASA</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Carrusel de imágenes -->
+        <section class="carousel-section" id="inicio">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="imagenes/angioCarrousel5.jpg" alt="Slide 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/angioCarrousel6.jpg" alt="Slide 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/angioCarrousel7.jpg" alt="Slide 3">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Anterior">&lt;</button>
+                <button class="carousel-btn next" aria-label="Siguiente">&gt;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrusel Misión y Visión -->
+        <section class="mission-vision-section">
+            <div class="section-header">
+                <h2 class="section-title">Quiénes Somos</h2>
+                <p class="section-subtitle">Nuestro propósito y dirección institucional</p>
+            </div>
+            <div class="mv-carousel-container">
+                <div class="mv-carousel">
+                    <div class="mv-carousel-inner">
+                        <!-- Slide Misión -->
+                        <div class="mv-slide active">
+                            <div class="mv-content">
+                                <div class="mv-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                                        <path d="M12 8v8M8 12h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <h3>Misión</h3>
+                                <p>Nos comprometemos de corazón al cuidado de la salud de nuestros usuarios con liderazgo e innovación. brindando una esperanza de vida real y tangible que les permita continuar disfrutando momentos de felicidad.</p>
+                            </div>
+                            <div class="mv-image-wrapper">
+                                <div class="mv-badge">Nuestra Misión</div>
+                                <div class="mv-image">
+                                    <img src="imagenes/mision.jpeg" alt="Misión Angiografía de Occidente">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide Visión -->
+                        <div class="mv-slide">
+                            <div class="mv-content">
+                                <div class="mv-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5C7 5 2.73 8.11 1 12.5 2.73 16.89 7 20 12 20s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                        <circle cx="12" cy="12.5" r="3.5" fill="currentColor"/>
+                                        <circle cx="12" cy="12.5" r="1.5" fill="white"/>
+                                    </svg>
+                                </div>
+                                <h3>Visión</h3>
+                                <p>Ser ampliamente reconocida como una organización innovadora con altos estándares de calidad, con servicios de salud integrales, diversos, y de alcance nacional e internacional, enfocados en la creación de valor y trato humanizado.</p>
+                            </div>
+                            <div class="mv-image-wrapper">
+                                <div class="mv-badge">Nuestra Visión</div>
+                                <div class="mv-image">
+                                    <img src="imagenes/vision.jpg" alt="Visión Angiografía de Occidente">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mv-btn mv-prev" aria-label="Anterior">&lt;</button>
+                    <button class="mv-btn mv-next" aria-label="Siguiente">&gt;</button>
+                    <div class="mv-indicators">
+                        <span class="mv-indicator active" data-slide="0"></span>
+                        <span class="mv-indicator" data-slide="1"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secciones institucionales -->
+        <section class="institutional-section" id="institucion">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Compromisos</h2>
+                <p class="section-subtitle">Políticas y valores que guían nuestro actuar</p>
+            </div>
+            <div class="container">
+                <article class="info-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="currentColor"/>
+                            <path d="M14 2v6h6M9 13l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 17h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2>Política Integrada de Gestión</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, placeat consequatur. Officia, blanditiis porro quaerat in nisi veniam facilis iste reiciendis reprehenderit inventore, officiis maiores qui quo id ab voluptas?</p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 6v5c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" fill="currentColor"/>
+                            <path d="M12 8v8M8 12h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2>Política de Seguridad del Paciente</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed velit nemo ullam quod, accusamus impedit consequatur delectus magnam deserunt exercitationem eligendi libero eum nobis architecto doloremque voluptatum quia. Voluptas, nam!/p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor"/>
+                            <path d="M12 10v6M9 13h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2>Valores Enfocados hacia el Paciente</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis officiis, porro atque est animi quaerat quis aperiam corrupti quibusdam modi ipsum velit enim itaque fugit a temporibus inventore! Harum, sed!</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Valores Corporativos -->
+        <section class="corporate-values-section">
+            <div class="section-header">
+                <h2 class="section-title">Valores Corporativos</h2>
+                <p class="section-subtitle">Los pilares que definen nuestra cultura organizacional</p>
+            </div>
+            <div class="values-container">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="currentColor"/>
+                            <path d="M12 7V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 8L16 16M16 8L8 16" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <h3>Liderazgo</h3>
+                    <p>Potencializar las capacidades del equipo de trabajo para lograr el cumplimiento de metas y objetivos.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+                            <path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Innovación</h3>
+                    <p>Capacidad de reinvención adaptabilidad y mejora continua en los procesos para la prestacion del servicio.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor"/>
+                            <path d="M12 10v6M9 13h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Humanización</h3>
+                    <p>Reconocer en cada persona su valor y dignidad humana, empatizando con sus condiciones de vida, salud y cultura, brindando un trato digno como derecho legítimo y fundamental en la atención.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C10 2 8.5 3.5 8.5 5.5V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8H15.5V5.5C15.5 3.5 14 2 12 2Z" fill="currentColor"/>
+                            <path d="M10 14L11 15L14 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Integridad</h3>
+                    <p>Coherencia en el pensar, decir y actuar, lo manifestamos con conductas éticas que nos permiten construir y mantener relaciones confiables y duraderas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
