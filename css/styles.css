@@ -1,8 +1,13 @@
 :root {
-    --header-bg: #f4f6f8;
+    --header-bg: #f1f5ff;
     --text-color: #585C5E;
     --accent: #001F78;
     --highlight: #E6B32A;
+    --scrollbar-track: #f5f7fb;
+    --scrollbar-thumb: #c8d3ea;
+    --scrollbar-thumb-hover: #aab9dd;
+    --section-divider: rgba(0, 31, 120, 0.16);
+    --section-divider-accent: rgba(230, 179, 42, 0.18);
 }
 
 * {
@@ -13,12 +18,53 @@
 
 html {
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-color);
     background: #ffffff;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    margin: 0;
+    padding: 0;
+}
+
+main > section {
+    position: relative;
+}
+
+main > section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(920px, 80%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--section-divider), var(--section-divider-accent), transparent);
+}
+
+/* Scrollbar sutil (Chrome/Edge/Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 8px;
+    border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
 }
 
 /* Animaciones */
@@ -30,6 +76,25 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none;
+        transform: none;
     }
 }
 
@@ -318,6 +383,62 @@ body {
 .indicator:hover {
     background: rgba(230, 179, 42, 0.6);
     transform: scale(1.1);
+}
+
+/* Procedimientos */
+.procedures-section {
+    background: linear-gradient(135deg, #001f78 0%, #0b2a8a 100%);
+    padding: 90px 20px;
+    border-radius: 28px;
+    margin: 40px 20px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.procedures-section .section-header {
+    margin-bottom: 48px;
+}
+
+.procedures-section .section-title {
+    color: #ffffff;
+}
+
+.procedures-section .section-title::after {
+    background: linear-gradient(90deg, #ffffff 0%, var(--highlight) 100%);
+}
+
+.procedures-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 24px;
+}
+
+.procedure-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+}
+
+.procedure-card-large {
+    grid-row: span 2;
+}
+
+.procedure-card iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 16px;
+    display: block;
+}
+
+.procedure-card-large iframe {
+    min-height: 420px;
 }
 
 /* Carrusel Misión y Visión */
@@ -886,6 +1007,7 @@ body {
     opacity: 0.9;
 }
 
+
 @media (max-width: 768px) {
     .carousel {
         aspect-ratio: 16 / 9;
@@ -896,6 +1018,14 @@ body {
     .carousel-section {
         margin-top: 24px;
         padding: 0 16px;
+    }
+
+    .hero-split {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image img {
+        min-height: 320px;
     }
 
     .carousel-btn {
@@ -1027,6 +1157,24 @@ body {
         font-size: 14px;
         padding: 10px 20px;
     }
+
+    .procedures-section {
+        padding: 70px 16px;
+        margin: 32px 12px;
+    }
+
+    .procedures-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .procedure-card-large {
+        grid-row: auto;
+    }
+
+    .procedure-card-large iframe {
+        min-height: 240px;
+    }
+
 
     .mv-btn {
         padding: 6px;

@@ -2,6 +2,18 @@
 
 // Funcionalidad del carrusel
 document.addEventListener('DOMContentLoaded', function() {
+    const footerSlot = document.getElementById('site-footer');
+    if (footerSlot) {
+        fetch('footer.html', { cache: 'no-store' })
+            .then((response) => response.text())
+            .then((html) => {
+                footerSlot.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error('No se pudo cargar el footer:', error);
+            });
+    }
+
     const carouselItems = document.querySelectorAll('.carousel-item');
     const indicators = document.querySelectorAll('.indicator');
     const prevBtn = document.querySelector('.carousel-btn.prev');
@@ -70,27 +82,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Animación de entrada para las tarjetas
+    // Animaciones de entrada al hacer scroll
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const observerOptions = {
         threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -80px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                observer.unobserve(entry.target);
+                entry.target.classList.add('reveal-visible');
+            } else {
+                entry.target.classList.remove('reveal-visible');
             }
         });
     }, observerOptions);
 
-    const cards = document.querySelectorAll('.info-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.animationDelay = `${index * 0.1}s`;
-        observer.observe(card);
-    });
+    function registerReveal(selector, staggerSeconds) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.classList.add('reveal');
+            if (staggerSeconds) {
+                element.style.transitionDelay = `${index * staggerSeconds}s`;
+            }
+            if (reduceMotion) {
+                element.classList.add('reveal-visible');
+            } else {
+                revealObserver.observe(element);
+            }
+        });
+    }
+
+    registerReveal('.section-header', 0.08);
+    registerReveal('.mv-carousel', 0);
+    registerReveal('.info-card', 0.1);
+    registerReveal('.value-item', 0.08);
+    registerReveal('.procedure-card', 0.08);
 
     // Carrusel Misión y Visión
     const mvSlides = document.querySelectorAll('.mv-slide');
