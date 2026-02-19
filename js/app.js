@@ -1,6 +1,6 @@
 "use strict";
 
-// Funcionalidad del carrusel
+// Cargar footer dinámicamente
 document.addEventListener('DOMContentLoaded', function() {
     const footerSlot = document.getElementById('site-footer');
     if (footerSlot) {
@@ -13,74 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('No se pudo cargar el footer:', error);
             });
     }
-
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const indicators = document.querySelectorAll('.indicator');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    
-    let currentSlide = 0;
-    const totalSlides = carouselItems.length;
-    
-    // Función para mostrar slide específico
-    function showSlide(index) {
-        const prevSlide = currentSlide;
-        
-        // Normalizar el índice
-        if (index >= totalSlides) {
-            currentSlide = 0;
-        } else if (index < 0) {
-            currentSlide = totalSlides - 1;
-        } else {
-            currentSlide = index;
-        }
-        
-        // Actualizar slides con animación de deslizamiento
-        carouselItems.forEach((item, i) => {
-            item.classList.remove('active', 'prev');
-            if (i === currentSlide) {
-                item.classList.add('active');
-            } else if (i === prevSlide) {
-                item.classList.add('prev');
-            }
-        });
-        
-        // Actualizar indicadores
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentSlide);
-        });
-    }
-    
-    // Botón anterior
-    prevBtn.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-    });
-    
-    // Botón siguiente
-    nextBtn.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-    });
-    
-    // Indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            showSlide(index);
-        });
-    });
-    
-    // Auto-avance cada 5 segundos
-    setInterval(() => {
-        showSlide(currentSlide + 1);
-    }, 5000);
-    
-    // Navegación con teclado
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            showSlide(currentSlide - 1);
-        } else if (e.key === 'ArrowRight') {
-            showSlide(currentSlide + 1);
-        }
-    });
 
     // Animaciones de entrada al hacer scroll
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -120,61 +52,162 @@ document.addEventListener('DOMContentLoaded', function() {
     registerReveal('.value-item', 0.08);
     registerReveal('.procedure-card', 0.08);
 
-    // Carrusel Misión y Visión
-    const mvSlides = document.querySelectorAll('.mv-slide');
-    const mvIndicators = document.querySelectorAll('.mv-indicator');
-    const mvPrevBtn = document.querySelector('.mv-prev');
-    const mvNextBtn = document.querySelector('.mv-next');
-    
-    let currentMVSlide = 0;
-    const totalMVSlides = mvSlides.length;
-    
-    function showMVSlide(index) {
-        const prevSlide = currentMVSlide;
-        
-        if (index >= totalMVSlides) {
-            currentMVSlide = 0;
-        } else if (index < 0) {
-            currentMVSlide = totalMVSlides - 1;
-        } else {
-            currentMVSlide = index;
-        }
-        
-        // Actualizar slides con animación de deslizamiento
-        mvSlides.forEach((slide, i) => {
-            slide.classList.remove('active', 'prev');
-            if (i === currentMVSlide) {
-                slide.classList.add('active');
-            } else if (i === prevSlide) {
-                slide.classList.add('prev');
+    // Leer más en sección Nuestros Compromisos
+    document.querySelectorAll('.read-more').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const card = btn.closest('.info-card');
+            const collapse = card.querySelector('.collapse-text');
+            const expanded = collapse.classList.toggle('expanded');
+            btn.textContent = expanded ? 'Leer menos' : 'Leer más';
+            if (expanded) {
+                collapse.style.maxHeight = collapse.scrollHeight + 'px';
+            } else {
+                collapse.style.maxHeight = null;
             }
         });
-        
-        mvIndicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentMVSlide);
+    });
+
+    // Carrusel Misión y Visión
+
+    const mvSlides = document.querySelectorAll('.mv-slide');
+    const mvPrevBtn = document.querySelector('.mv-btn.mv-prev');
+    const mvNextBtn = document.querySelector('.mv-btn.mv-next');
+    let mvCurrent = 0;
+    let mvInterval;
+
+    function showMVSlide(index) {
+        mvSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            slide.style.transform = `translateX(${(i - index) * 100}%)`;
         });
+        mvCurrent = index;
     }
-    
-    if (mvPrevBtn) {
-        mvPrevBtn.addEventListener('click', () => {
-            showMVSlide(currentMVSlide - 1);
-        });
+
+    function nextMVSlide() {
+        showMVSlide((mvCurrent + 1) % mvSlides.length);
     }
-    
-    if (mvNextBtn) {
+
+    function prevMVSlide() {
+        showMVSlide((mvCurrent - 1 + mvSlides.length) % mvSlides.length);
+    }
+
+    function startMVAutoPlay() {
+        mvInterval = setInterval(nextMVSlide, 6000);
+    }
+
+    function stopMVAutoPlay() {
+        clearInterval(mvInterval);
+    }
+
+    if (mvPrevBtn && mvNextBtn) {
         mvNextBtn.addEventListener('click', () => {
-            showMVSlide(currentMVSlide + 1);
+            nextMVSlide();
+            stopMVAutoPlay();
+            startMVAutoPlay();
+        });
+        mvPrevBtn.addEventListener('click', () => {
+            prevMVSlide();
+            stopMVAutoPlay();
+            startMVAutoPlay();
         });
     }
-    
-    mvIndicators.forEach((indicator, index) => {
+
+    showMVSlide(mvCurrent);
+    startMVAutoPlay();
+
+    // Carrusel de imágenes del Hero
+    const heroSlides = document.querySelectorAll('.hero-carousel-slide');
+    const heroPrevBtn = document.querySelector('.hero-carousel-prev');
+    const heroNextBtn = document.querySelector('.hero-carousel-next');
+    const heroIndicators = document.querySelectorAll('.hero-carousel-indicator');
+    let heroCurrent = 0;
+    let heroInterval;
+
+    function showHeroSlide(index) {
+        heroSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        heroIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+        heroCurrent = index;
+    }
+
+    function nextHeroSlide() {
+        showHeroSlide((heroCurrent + 1) % heroSlides.length);
+    }
+
+    function prevHeroSlide() {
+        showHeroSlide((heroCurrent - 1 + heroSlides.length) % heroSlides.length);
+    }
+
+    function startHeroAutoPlay() {
+        heroInterval = setInterval(nextHeroSlide, 5000);
+    }
+
+    function stopHeroAutoPlay() {
+        clearInterval(heroInterval);
+    }
+
+    if (heroNextBtn) {
+        heroNextBtn.addEventListener('click', () => {
+            nextHeroSlide();
+            stopHeroAutoPlay();
+            startHeroAutoPlay();
+        });
+    }
+    if (heroPrevBtn) {
+        heroPrevBtn.addEventListener('click', () => {
+            prevHeroSlide();
+            stopHeroAutoPlay();
+            startHeroAutoPlay();
+        });
+    }
+    heroIndicators.forEach((indicator, i) => {
         indicator.addEventListener('click', () => {
-            showMVSlide(index);
+            showHeroSlide(i);
+            stopHeroAutoPlay();
+            startHeroAutoPlay();
         });
     });
-    
-    // Auto-avance cada 7 segundos para Misión/Visión
-    setInterval(() => {
-        showMVSlide(currentMVSlide + 1);
-    }, 7000);
+
+    showHeroSlide(heroCurrent);
+    startHeroAutoPlay();
+
+    // Modal de Datos de Interés
+    const modal = document.getElementById('dataModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    if (openModalBtn && modal) {
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 });

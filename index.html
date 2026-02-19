@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angiografia de Occidente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/footer.css">
     
@@ -19,10 +22,29 @@
                 <li class="nav-dropdown">
                     <a href="#Servicios">Servicios</a>
                     <div class="dropdown-menu">
-                        <a href="#mision">Hemodinamia</a>
-                        <a href="#vision">Cardiologia CNI</a>
-                        <a href="#procedimientos">Imagenes Diagnosticas</a>
+                        <a href="#consulta-externa">Consulta Externa</a>
+
+                        <div class="dropdown-item dropdown-nested">
+                            <a href="#unidades-angiografia">Unidades de Angiografía</a>
+                            <div class="dropdown-submenu">
+                                <a href="#hemodinamia">Hemodinamia</a>
+                                <a href="#electrofisiologia">Electrofisiología</a>
+                                <a href="#neuroradiologia">Neuroradiología Intervencionista</a>
+                                <a href="#radiologia-vascular">Radiología Intervencionista Vascular Periférico Endovascular</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item dropdown-nested">
+                            <a href="#imagenes-diagnosticas">Imágenes Diagnósticas</a>
+                            <div class="dropdown-submenu">
+                                <a href="#ecografias">Ecografías</a>
+                                <a href="#tomografia">Tomografía Computarizada o Escanografía</a>
+                                <a href="#angiotac">Angiotac</a>
+                                <a href="#rmn">RMN</a>
+                            </div>
+                        </div>
+                        <a href="#servicios-ips">Servicios ambulatorios de IPS (en convenio con Nueva EPS)</a>
                     </div>
+                </li>
                 <li class="nav-dropdown">
                     <a href="#Departamentos">Departamentos</a>
                     <div class="dropdown-menu"> 
@@ -33,6 +55,9 @@
                                 <a href="#direccion-medica">Dirección Médica</a>
                                 <a href="#direccion-administrativa">Dirección Administrativa</a>
                                 <a href="#direccion-financiera">Dirección Financiera</a>
+                                <a href="#direccion-talento-humano">Dirección de Talento Humano</a>
+                                <a href="#direccion-calidad">Dirección de Calidad</a>
+                                <a href="#direccion-sistemas">Dirección de sistemas</a>
                             </div>
                         </div>
                     </div>
@@ -59,29 +84,125 @@
     </header>
 
     <main>
-        <!-- Carrusel de imágenes -->
-         <section class="carousel-section" id="inicio">
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="imagenes/angioCarrousel5.jpg" alt="Slide 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imagenes/angioCarrousel6.jpg" alt="Slide 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imagenes/angioCarrousel7.jpg" alt="Slide 3">
+        <!-- Hero Section con Corazón Animado -->
+        <section class="hero-section" id="inicio">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-image-carousel" aria-label="Carrusel principal">
+                        <div class="hero-carousel-slide active">
+                            <img src="imagenes/angioCarrousel1.jpg" alt="Imagen institucional 1 Angiografía de Occidente">
+                        </div>
+                        <div class="hero-carousel-slide">
+                            <img src="imagenes/angioCarrousel2.jpg" alt="Imagen institucional 2 Angiografía de Occidente">
+                        </div>
+                        <div class="hero-carousel-slide">
+                            <img src="imagenes/angioCarrousel3.jpg" alt="Imagen institucional 3 Angiografía de Occidente">
+                        </div>
+                        <div class="hero-carousel-slide">
+                            <img src="imagenes/angioCarrousel4.jpg" alt="Imagen institucional 4 Angiografía de Occidente">
+                        </div>
+                        <button class="hero-carousel-btn hero-carousel-prev" type="button" aria-label="Imagen anterior">&#10094;</button>
+                        <button class="hero-carousel-btn hero-carousel-next" type="button" aria-label="Imagen siguiente">&#10095;</button>
+                        <div class="hero-carousel-indicators" aria-label="Indicadores del carrusel">
+                            <button class="hero-carousel-indicator active" type="button" aria-label="Ir a imagen 1" data-slide="0"></button>
+                            <button class="hero-carousel-indicator" type="button" aria-label="Ir a imagen 2" data-slide="1"></button>
+                            <button class="hero-carousel-indicator" type="button" aria-label="Ir a imagen 3" data-slide="2"></button>
+                            <button class="hero-carousel-indicator" type="button" aria-label="Ir a imagen 4" data-slide="3"></button>
+                        </div>
                     </div>
                 </div>
-                <button class="carousel-btn prev" aria-label="Anterior">&lt;</button>
-                <button class="carousel-btn next" aria-label="Siguiente">&gt;</button>
-                <div class="carousel-indicators">
-                    <span class="indicator active" data-slide="0"></span>
-                    <span class="indicator" data-slide="1"></span>
-                    <span class="indicator" data-slide="2"></span>
+                <div class="hero-heart">
+                    <img src="imagenes/Corazon_ADO.png" alt="Corazón Angiografía de Occidente" class="heart-animated">
+                    <button class="hero-btn" id="openModalBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Datos de interés que debes conocer
+                    </button>
                 </div>
             </div>
         </section>
+
+        <!-- Modal de Datos de Interés -->
+        <div id="dataModal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" id="closeModalBtn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="modal-header">
+                    <h2>Datos de Interés que debes conocer</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="info-card">
+                        <div class="card-number">01</div>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sostenibilidad Ambiental</h3>
+                            <p>En Angiografía de Occidente S.A. hacemos uso responsable de recursos y acciones orientadas a la eficiencia energética y manejo adecuado de residuos hospitalarios.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-number">02</div>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Desarrollo del Talento Humano</h3>
+                            <p>Apostamos por el desarrollo del talento humano, la formación continua y el bienestar laboral, garantizando así una atención confiable y de alta calidad para nuestros usuarios.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-number">03</div>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Responsabilidad Social Empresarial</h3>
+                            <p>Contamos con un programa de Responsabilidad Social Empresarial, mediante el cual se realiza un trabajo colaborativo con aliados del sector salud, fortaleciendo redes de atención y valor compartido.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-number">04</div>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Seguridad del Paciente</h3>
+                            <p>Implementamos protocolos clínicos y asistenciales orientados a resultados seguros y eficientes que contribuyan al fortalecimiento de la gestión del riesgo, la seguridad del paciente y la humanización del servicio.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-number">05</div>
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Excelencia en Atención</h3>
+                            <p>Brindamos una atención médica de la más alta calidad, soportada por equipos médicos especializados y tecnología avanzada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Carrusel Misión y Visión -->
         <section class="mission-vision-section">
@@ -189,8 +310,15 @@
                             <path d="M9 17h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h2>Política Integrada de Gestión</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, placeat consequatur. Officia, blanditiis porro quaerat in nisi veniam facilis iste reiciendis reprehenderit inventore, officiis maiores qui quo id ab voluptas?</p>
+                    <h2>Política del sistema de Gestión Integrado</h2>
+                    <p class="collapse-text">Disminuir los peligros biológicos, biomecánicos,
+                        condiciones de seguridad y riesgos de seguridad
+                        vial presentes, mediante la destinando los
+                        recursos, medios y formas. Promoviendo un
+                        ambiente sano y seguro para la prevención de
+                        accidentes y enfermedades laborales en nuestros
+                        trabajadores, contratistas y/o visitantes</p>
+                    <button class="read-more" type="button" aria-expanded="false">Leer mas</button>
                 </article>
 
                 <article class="info-card">
@@ -201,18 +329,34 @@
                         </svg>
                     </div>
                     <h2>Política de Seguridad del Paciente</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed velit nemo ullam quod, accusamus impedit consequatur delectus magnam deserunt exercitationem eligendi libero eum nobis architecto doloremque voluptatum quia. Voluptas, nam!/p>
+                    <p class="collapse-text">En Angiografía de Occidente S.A nos comprometemos a prestar
+                        servicios de salud en un entorno seguro para los pacientes, fomentando
+                        la cultura del reporte de incidentes y eventos adversos, educando a los
+                        colaboradores, nuestros pacientes y sus familias acerca de los factores
+                        que pueden afectar la seguridad durante el proceso de atención,
+                        implementando barreras efectivas y continuas para minimizar los riesgos
+                        en la atención en salud ejecutados por personal idóneo y capacitado</p>
+                    <button class="read-more" type="button" aria-expanded="false">Leer mas</button>
                 </article>
 
                 <article class="info-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor"/>
-                            <path d="M12 10v6M9 13h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 10v6M9 13h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h2>Valores Enfocados hacia el Paciente</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis officiis, porro atque est animi quaerat quis aperiam corrupti quibusdam modi ipsum velit enim itaque fugit a temporibus inventore! Harum, sed!</p>
+                    <div class="collapse-text">
+                        <p>Establecer las prácticas seguras de la atención en salud en Angiografía de Occidente S.A, que contribuyan a la prevención de incidentes y eventos adversos mediante la mitigación de los riesgos, las acciones inseguras y el fortalecimiento de las barreras de seguridad.</p>
+                        <ul style="margin-top: 10px;">
+                            <li>Comunicar y evaluar la política institucional de seguridad del paciente.</li>
+                            <li>Fomentar la cultura del reporte de los incidentes y eventos adversos mediante la búsqueda activa y pasiva de estos.</li>
+                            <li>Fomentar un entorno seguro de la atención en salud brindada a los pacientes mediante la prevención de la ocurrencia de incidentes y eventos adversos</li>
+                            <li>Promover la gestión de los incidentes y eventos adversos para el mejoramiento continuo y el aprendizaje organizacional (gestión del evento).</li>
+                        </ul>
+                    </div>
+                    <button class="read-more" type="button" aria-expanded="false">Leer mas</button>
                 </article>
             </div>
         </section>
